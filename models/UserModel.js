@@ -6,6 +6,11 @@ const UserSchema = mongoose.Schema({
     lastName: { type: String },
     email: { type: String, unique: "User With This Email Already Exist" },
     contact: { type: String, unique: "User With This Contact Already Exist" },
+    status: {type: String},
+    createdBy: {type: String},
+    updatedBy: {type: String},
+    createdAt: {type: String},
+    updatedAt: {type: String},
     password: { type: String },
     userType: { type: Number, ref: 'user_types' },
 });

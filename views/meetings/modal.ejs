@@ -1,0 +1,133 @@
+<script type="text/ng-template" id="modal.html">
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header" ng-class="{'bg-primary': newMeeting.mode == 'create', 'bg-warning': newMeeting.mode == 'edit'}">
+              <h4 class="modal-title text-white">{{newMeeting.mode == 'create' ? 'Create'  : 'Edit' }} Meeting</h4>
+              <!-- <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button> -->
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form name="form">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label>HostId</label>
+                            <input type="text" class="form-control" name="hostId" id="hostId"
+                                ng-model="newMeeting.hostId" placeholder="Enter hostId" ng-minlength="1" ng-maxlength="20" required>
+                            <div ng-messages="form.hostId.$error" ng-if="form.hostId.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a hostId for this field.
+                                </div>
+                                <div class="text-danger" ng-message="minlength">hostId At Least 1 Chars Long.</div>
+                                <div class="text-danger" ng-message="maxlength">hostId At Max 20 Chars Long.</div>
+                            </div>
+                        </div>
+
+                       
+
+                      
+                        <div class="form-group col-6">
+                            <label>HostFullName</label>
+                            <input type="text" class="form-control" name="hostfullname" id="hostfullname"
+                                ng-model="newMeeting.hostfullname" placeholder="Enter hostfullname" ng-minlength="1" ng-maxlength="20" required>
+                            <div ng-messages="form.hostfullname.$error" ng-if="form.hostfullname.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a hostfullname for this field.
+                                </div>
+                                <div class="text-danger" ng-message="minlength">hostfullname At Least 1 Chars Long.</div>
+                                <div class="text-danger" ng-message="maxlength">hostfullname At Max 20 Chars Long.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-6">
+                            <label>ParticpantFullName</label>
+                            <input type="text" class="form-control" name="particpantfullname" id="particpantfullname"
+                                ng-model="newMeeting.particpantfullname" placeholder="Enter Particpantfullname" ng-minlength="1" ng-maxlength="20" required>
+                            <div ng-messages="form.particpantfullname.$error" ng-if="form.particpantfullname.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a particpantfullname for this field.
+                                </div>
+                                <div class="text-danger" ng-message="minlength">particpantfullname At Least 1 Chars Long.</div>
+                                <div class="text-danger" ng-message="maxlength">particpantfullname At Max 20 Chars Long.</div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group col-6">
+                            <label>StartTime</label>
+                            <input type="text" class="form-control" name="starttime" id="starttime"
+                                ng-model="newMeeting.starttime" placeholder="Enter starttime in AM or PM" ng-minlength="1" ng-maxlength="20" required>
+                            <div ng-messages="form.starttime.$error" ng-if="form.starttime.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a starttime for this field.
+                                </div>
+                                <div class="text-danger" ng-message="minlength">starttime At Least 1 Chars Long.</div>
+                                <div class="text-danger" ng-message="maxlength">starttime At Max 20 Chars Long.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-6">
+                            <label>EndTime</label>
+                            <input type="text" class="form-control" name="endtime" id="endtime"
+                                ng-model="newMeeting.endtime" placeholder="Enter endtime in AM or PM " ng-minlength="1" ng-maxlength="20" required>
+                            <div ng-messages="form.endtime.$error" ng-if="form.endtime.$touched" role="alert">
+                                <div class="text-danger" ng-message="required">Please enter a endtime for this field.
+                                </div>
+                                <div class="text-danger" ng-message="minlength">endtime At Least 1 Chars Long.</div>
+                                <div class="text-danger" ng-message="maxlength">endtime At Max 20 Chars Long.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-6">
+                            <label>CreatedBy</label>
+                            <select class="form-control" name="CreatedBy" id="CreatedBy" ng-model="newMeeting.CreatedBy" required>
+                                <option>Host</option>
+                                <option>Particpant</option>
+                              
+                              </select> 
+                        </div>
+                        
+                        <div class="form-group col-6">
+                            <label>UpdatedBy</label>
+                            <input type="text" class="form-control" name="UpdatedBy" id="UpdatedBy"
+                                ng-model="newMeeting.UpdatedBy" placeholder="UpdatedBy is an Optional field" ng-minlength="1" ng-maxlength="20" >
+                        </div>
+
+                        <div class="form-group col-6">
+                            <label>CreatedAt</label>
+                            <input type="text" class="form-control" name="CreatedAt" id="CreatedAt"
+                                ng-model="newMeeting.CreatedAt" placeholder="CreatedAt is an Optional field" ng-minlength="1" ng-maxlength="20">
+                            
+                        </div>
+                        
+                        <div class="form-group col-6">
+                            <label>UpdatedAt</label>
+                            <input type="text" class="form-control" name="UpdatedAt" id="UpdatedAt"
+                                ng-model="newMeeting.UpdatedAt" placeholder="UpdatedAt is an Optional field" ng-minlength="1" ng-maxlength="20" >
+                        </div>
+
+                        <div class="form-group col-6">
+                            <label>status</label>
+                            <select class="form-control" name="status" id="status" ng-model="newMeeting.status" required>
+                                <option>Scheduled</option>
+                                <option>Completed</option>
+                                <option>Cancelled By Host</option>
+                                <option>Cancelled By particpant</option>
+                              </select> 
+                        </div>
+                    </div>
+                </form>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success pt-2" ng-click="addMeeting()" ng-if="newMeeting.mode != 'edit'"
+                ng-disabled="!form.$valid"><i class='fa fa-save'></i> Add</button>
+            <button class="btn btn-warning pt-3" ng-click="editMeeting()" ng-if="newMeeting.mode == 'edit'"
+                ng-disabled="!form.$valid"><i class='fa fa-save'></i> Edit</button>
+              <button type="button" class="btn btn-danger" ng-click="close()">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+</script>

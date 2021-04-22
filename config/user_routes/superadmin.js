@@ -1,6 +1,7 @@
-exports.allowedUrls = ['managers', 'products'];
+exports.allowedUrls = ['manageUsers', 'meetings'];
 
 exports.sideBarItems = [
-    { title: "Managers", icon: "speedometer", url: 'managers' },
-    { title: "Products", icon: "format-list-bulleted", url: 'products' },
+    { title: "ManageUsers", icon: "speedometer", url: 'manageUsers' },
+    { title: "ManageMeetings", icon: "format-list-bulleted", url: 'meetings' },
+  
 ];

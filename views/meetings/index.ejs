@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Manage Meeeting</title>
+    <%include ../partials/stylesheets.ejs%>
+    <style>
+      .modal {
+        display: block !important;
+        z-index: 9999 !important;
+        backdrop-filter: blur(14px) grayscale(0.6) opacity(12);
+      }
+     
+    </style>
+  </head>
+  <body ng-cloak ng-app="manageMeetings" ng-controller="manageMeetingsController" ng-init="init()">
+    <div class="container-scroller">
+      <!-- partial:partials/sidebar -->
+      <%include ../partials/sidebar.ejs%>
+      <!-- partial -->
+
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../partials/navbar -->
+        <%include ../partials/navbar.ejs%>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong class="card-title">ManageMeeting Table</strong>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col text-right">
+                        <button class="btn btn-success" ng-click="openModal('create')"><i class="fa fa-plus"></i>
+                          Add</button>
+                      </div>
+                    </div>
+                    <div class="table-responsive mt-4">
+                      <table class="table table-bordered table-striped text-center text-nowrap">
+                        <thead class="bg-dark text-white">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">HostFullName</th>
+                            <th scope="col">ParticpantFullName</th>
+                            <th scope="col">StartTime</th>
+                            <th scope="col">EndTime</th>
+                            <th scope="col">Status</th>
+                            <!-- <th scope="col">User Name</th> -->
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="meeting in meetings track by $index">
+                            <th>{{$index + 1}}</th>
+                            <th>{{meeting.hostfullname}}</th>
+                            <th>{{meeting.particpantfullname}}</th>
+                            <td>{{meeting.starttime}}</td>
+                            <td>{{meeting.endtime}}</td>
+                            <td>{{meeting.status}}</td>
+                            <!-- <td>{{product.fullName}}</td> -->
+                            <td>
+                              <button class="btn btn-warning text-white" ng-click="openModal('edit', meeting, $index)"><i class="fa fa-edit"></i></button>
+                              <button class="btn btn-danger text-white" ng-click="deleteMeeting(meeting._id, $index)"><i class="fa fa-trash"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <%include ./modal.ejs%>
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+
+    
+<!-- angular files -->
+<script src="/assets/angularjs/angular.min.js"></script>
+
+<script src="/assets/angularjs/angular-messages.min.js"></script>
+<script src='/assets/angularjs/angular-animate.min.js'></script>
+<script src='/assets/angularjs/angular-route.min.js'></script>
+<script src='/assets/angularjs/angular-aria.min.js'></script>
+<!-- <script src='./moment/moment.js'></script> -->
+<script src='/assets/angularjs/angular-material.js'></script>
+<script src="/assets/angularjs/angular-sanitize.js"></script>
+<script src="/assets/angularjs/ui-bootstrap-tpls-2.1.3.js"></script>
+<script src="/assets/ngapps/managemeeting.js"></script>
+  </body>
+</html>

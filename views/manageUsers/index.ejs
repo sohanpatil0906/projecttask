@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ManageUsers</title>
+    <%include ../partials/stylesheets.ejs%>
+    <style>
+      .modal {
+        display: block !important;
+        z-index: 9999 !important;
+        backdrop-filter: blur(14px) grayscale(0.6) opacity(12);
+      }
+     
+    </style>
+  </head>
+  <body ng-cloak ng-app="manageUsers" ng-controller="manageUsersController" ng-init="init()">
+    <div class="container-scroller">
+      <!-- partial:partials/sidebar -->
+      <%include ../partials/sidebar.ejs%>
+      <!-- partial -->
+
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../partials/navbar -->
+        <%include ../partials/navbar.ejs%>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong class="card-title">ManageUsers Table</strong>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col text-right">
+                        <button class="btn btn-success" ng-click="openModal('create')"><i class="fa fa-plus"></i>
+                          Add</button>
+                      </div>
+                    </div>
+                    <div class="table-responsive mt-4">
+                      <table class="table table-bordered table-striped text-center text-nowrap">
+                        <thead class="bg-dark text-white">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">FullName</th>     
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">CreatedBy</th>
+                            <th scope="col">Action</th>
+        
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="user in users track by $index">
+                            <th>{{$index + 1}}</th>
+                            <td>{{user.firstName}} {{user.lastName}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.contact}}</td>
+                            <td>{{user.status}}</td>
+                            <td>{{user.createdBy}}</td>
+                            <td>
+                              <button class="btn btn-warning text-white" ng-click="openModal('edit', user, $index)"><i class="fa fa-edit"></i></button>
+                              <button class="btn btn-danger text-white" ng-click="deleteUser(user._id, $index)"><i class="fa fa-trash"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
+              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <%include ./modal.ejs%>
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+
+    
+<!-- angular files -->
+<script src="/assets/angularjs/angular.min.js"></script>
+
+<script src="/assets/angularjs/angular-messages.min.js"></script>
+<script src='/assets/angularjs/angular-animate.min.js'></script>
+<script src='/assets/angularjs/angular-route.min.js'></script>
+<script src='/assets/angularjs/angular-aria.min.js'></script>
+<!-- <script src='./moment/moment.js'></script> -->
+<script src='/assets/angularjs/angular-material.js'></script>
+<script src="/assets/angularjs/angular-sanitize.js"></script>
+<script src="/assets/angularjs/ui-bootstrap-tpls-2.1.3.js"></script>
+<script src="/assets/ngapps/manageUser.js"></script>
+  </body>
+</html>

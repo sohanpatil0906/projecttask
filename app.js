@@ -40,6 +40,9 @@ mongoose.connect(connection_url, { useNewUrlParser: true, useUnifiedTopology: tr
     console.log("Connected Successfully");
 });
 
+// app.use('/', require('./routes/managers'));
+// app.use('/', require('./routes/products'));
+
 //Locals Setup
 app.use((req, res, next)=>{
   res.locals.userName = req.session.userName;

@@ -2,7 +2,7 @@ const UserModel = require('../models/UserModel');
 const UserTypeModel = require('../models/UserTypeModel');
 const apiRes = require('../helpers/apiResponse');
 const superAdminSideBarItems = require('../config/user_routes/superadmin').sideBarItems;
-const managerSideBarItems = require('../config/user_routes/manager').sideBarItems;
+// const managerSideBarItems = require('../config/user_routes/manager').sideBarItems;
 
 /**
  * List Of Methods For This Controller
@@ -39,12 +39,14 @@ class AuthController{
                 if(user.password == req.body.password){
                     //Session Setup
                     req.session.userId = user._id;
+                    req.session.userType = user.userType;
                     req.session.email = user.email;
                     req.session.userName = `${user.firstName} ${user.lastName}`;
 
                     //Check User Type And Assign Side Menu Items
                     req.session.sideBarItems = user.userType == 1 ? superAdminSideBarItems : managerSideBarItems;
-                    return res.redirect('/auth/blank');
+                    req.session.redirectUrl = "/" + req.session.sideBarItems[0].url;
+                    return res.redirect(req.session.redirectUrl);
                 }
                 return res.redirect('/auth/login');
             } catch (err) {
